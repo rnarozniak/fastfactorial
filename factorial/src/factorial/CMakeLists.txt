@@ -7,5 +7,6 @@ ADD_EXECUTABLE( factorial.exe
                 timer )
 
 TARGET_LINK_LIBRARIES( factorial.exe
-                       gmp )
+                       gmp
+                       boost_thread-mt )
 
