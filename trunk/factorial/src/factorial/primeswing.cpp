@@ -32,7 +32,8 @@ mpz_class PrimeSwing::Factorial( int _number )
         return result;
     }
 
-    RecFactorial( result, _number, PrimeSieve(_number) );
+    PrimeSieve sieve(_number);
+    RecFactorial(result, _number, sieve);
     result <<= ( _number - UtilityFunctions::BitCount(_number) );
 
     return result;
