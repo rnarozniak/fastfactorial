@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\mpir-win32-release"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,8 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="gmp.lib gmpxx.lib"
+				AdditionalDependencies="mpir.lib mpirxx.lib"
 				LinkIncremental="2"
+				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -120,7 +121,7 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\mpir-win32-release"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -139,8 +140,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="gmp.lib gmpxx.lib"
+				AdditionalDependencies="mpir.lib mpirxx.lib"
 				LinkIncremental="1"
+				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
