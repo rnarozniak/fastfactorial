@@ -17,11 +17,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 
-template<typename _FactorialCalculator>
 void FastCheck();
-
-
-template<typename _FactorialCalculator>
 void TestNumber( int _number );
 
 
@@ -31,11 +27,11 @@ void TestNumber( int _number );
 int main()
 {
     // Perform a fast check
-    FastCheck<ParallelPrimeSwing>();
+    FastCheck();
 
     // It takes approx 25 seconds to calculate 10000000 factorial on
     // Athlon Dual Core Processor 4050e 2.10 GHz, 2 GB RAM
-    TestNumber<ParallelPrimeSwing>(10000000);
+    TestNumber(10000000);
 
     // Exit
     return 0;
@@ -45,31 +41,39 @@ int main()
 //////////////////////////////////////////////////////////////////////////
 
 
-template<typename _FactorialCalculator>
 void FastCheck()
 {
     for (int i = 1000; i < 10000; i += 500)
-        TestNumber<_FactorialCalculator>(i);
+        TestNumber(i);
 }
 
 
 //////////////////////////////////////////////////////////////////////////
 
 
-template<typename _FactorialCalculator>
 void TestNumber( int _number )
 {
     // Number for calculating factorial
-    _FactorialCalculator calculator;
-    mpz_class result;
+    mpz_class primeSwingResult;
+    mpz_class parallelPrimeSwingResultresult;
 
     std::cout << "Testing number: " << _number << std::endl;
 
     // Calculate factorial using prime swing algorithm
     std::cout << "Prime Swing: ";
     {
+        PrimeSwing calculator;
         ScopeTimePrinter printer;
-        result = calculator.Factorial(_number);
+        primeSwingResult = calculator.Factorial(_number);
+    }
+    std::cout << std::endl;
+
+    // Calculate factorial using parallel prime swing algorithm
+    std::cout << "Parallel Prime Swing: ";
+    {
+        ParallelPrimeSwing calculator;
+        ScopeTimePrinter printer;
+        parallelPrimeSwingResultresult = calculator.Factorial(_number);
     }
     std::cout << std::endl;
 
@@ -82,7 +86,7 @@ void TestNumber( int _number )
     }
 
     // Check them for equality
-    if (check == result)
+    if (check == primeSwingResult && check == parallelPrimeSwingResultresult)
         std::cout << "      OK";
     else
         std::cout << "      FAIL";
